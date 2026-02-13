@@ -17,7 +17,7 @@ Unlike standard attention, which assigns uniform initial conditions to all token
 ### Key Features
 - **Pascal Pyramid Bias**: Utilizes trinomial coefficients $(x+y+z)^n$ to mathematically model the relationships and interaction probabilities between tokens.
 - **Adaptive Bias Scaling**: A warm-up scheduling system that starts with weak bias and gradually increases it, allowing for stable pattern learning.
-- **Skip-Gram Penalty**: Introduces a learnable penalty ($$B'_{i,j} = B_{i,j} \cdot e^{-\exp(\theta)}$$) for distant token pairs to balance local and global context.
+- **Skip-Gram Penalty**: Introduces a learnable penalty $B'_{i,j} = B_{i,j} \cdot e^{-\exp(\theta)}$ for distant token pairs to balance local and global context.
 - **Efficient Training**: Achieves competitive Perplexity (PPL) on WikiText-103 with optimized resource consumption.
 
 ---
