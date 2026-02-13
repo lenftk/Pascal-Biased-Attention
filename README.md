@@ -40,7 +40,7 @@ This value is transformed into a log-bias and added to the attention scores befo
 
 The model follows a **Decoder-only Transformer** architecture (GPT-style) but replaces the standard Self-Attention with **Pascal Biased Multi-Head Attention**.
 
-<div align="center" style="max-width: 600px; margin: auto;">
+<div align="center" style="max-width: 300px; margin: auto;">
 
 ```mermaid
 graph TD
