@@ -28,6 +28,7 @@ Unlike standard attention, which assigns uniform initial conditions to all token
 The Pascal Pyramid represents combinatorial possibilities in 3D space. In this project, it is interpreted as the 'distance' and 'interaction probability' between words in a vector space.
 
 ![Pascal Pyramid Structure](assets/pascal_pyramid_structure.png)
+
 *Figure 1: Illustration of Pascal Pyramid layers (Layer 0–4) representing structural inductive bias.*
 
 The bias for $Layer = n$ is calculated as the product of two binomial coefficients:
@@ -116,6 +117,7 @@ The model demonstrates efficient convergence on WikiText-103, reaching a competi
 - **LAMBADA Accuracy**: 72.81%
 
 ![Loss Graph](assets/loss_graph.png)
+
 *Figure 3: Training and Validation loss curves showing steady convergence.*
 
 ---
