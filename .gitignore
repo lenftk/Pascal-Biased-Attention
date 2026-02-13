@@ -1,0 +1,8 @@
+__pycache__/
+*.pt
+*.bin
+*.pkl
+.DS_Store
+data/
+checkpoint/
+venv/
