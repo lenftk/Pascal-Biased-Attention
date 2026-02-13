@@ -171,15 +171,20 @@ python train.py
 
 ---
 
-## 🔮 Future Work
+## 🗺️ Future Work
 - Generalization testing across diverse domains beyond WikiText-103.
 - In-depth analysis of optimal Pascal parameters $(n)$ and their linguistic correlations.
 - Scaling to larger model sizes and multi-GPU environments.
 
-## 👤 Author
-**Min JuHo (민주호)**
-- **GitHub**: [@lenftk](https://github.com/lenftk)
-- **Email**: juhomin16@gmail.com
+## 👨‍💻 Developer
+
+<div align="center">
+  <h3>JuHo Min</h3>
+  <p><i>Student & Developer</i></p>
+
+  [![Email](https://img.shields.io/badge/Email-juhomin16%40gmail.com-red?style=flat-square&logo=gmail)](mailto:juhomin16@gmail.com)
+  [![GitHub](https://img.shields.io/badge/GitHub-%40lenftk-black?style=flat-square&logo=github)](https://github.com/lenftk)
+</div>
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
