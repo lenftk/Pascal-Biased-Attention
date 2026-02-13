@@ -178,7 +178,6 @@ python train.py
 **Min JuHo (민주호)**
 - **GitHub**: [@lenftk](https://github.com/lenftk)
 - **Email**: juhomin16@gmail.com
-- **Activity**: 2024.09 ~ Present
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
