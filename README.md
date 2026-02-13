@@ -40,12 +40,56 @@ This value is transformed into a log-bias and added to the attention scores befo
 
 The model follows a **Decoder-only Transformer** architecture (GPT-style) but replaces the standard Self-Attention with **Pascal Biased Multi-Head Attention**.
 
-![Model Architecture](assets/model_architecture.png)
-*Figure 2: Flowchart showing the integration of Pascal Bias within the Multi-Head Attention block.*
+```mermaid
+graph TD
+    Input([Input Tokens]) --> AT[Token & Positional Embedding]
+    
+    subgraph DecoderBlock [Decoder Block - N times]
+        direction TB
+        Node1(( ))
+        LN1[Layer Norm]
+        PBA[Pascal Biased Multi-Head Attention]
+        PB[Pascal Bias]
+        CM[Causal Masking]
+        AddNorm1[Add & Norm]
+        
+        LN2[Layer Norm]
+        FFN[Feed Forward - MLP]
+        AddNorm2[Add & Norm]
+        
+        Node1 --> LN1
+        LN1 --> PBA
+        PB --> PBA
+        CM --> PBA
+        PBA --> AddNorm1
+        Node1 -- Residual Connection --- AddNorm1
+        
+        AddNorm1 --> LN2
+        LN2 --> FFN
+        FFN --> AddNorm2
+        AddNorm1 -- Residual Connection --- AddNorm2
+        
+        Node2(( ))
+    end
+    
+    AT --> Node1
+    AddNorm2 --> Node2
+    Node2 --> FLN[Final Layer Norm]
+    FLN --> Linear[Linear - lm_head]
+    Linear --> Softmax[Softmax]
+    Softmax --> Out([Output Probabilities])
+
+    style Input fill:#d1f,color:#fff
+    style Out fill:#d1f,color:#fff
+    style PB fill:#dfd
+    style CM fill:#dfd
+    style PBA fill:#fdd
+```
 
 ### Biased Attention Formula
 The Pascal biased attention is defined as:
 $$\text{Attention}_{pascal}(Q, K, V) = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} + \alpha(t) \cdot B'(\theta) \right)V$$
+
 Where:
 - $B'(\theta)$ is the Pascal Bias matrix after applying the Skip-Gram penalty.
 - $\alpha(t)$ is the adaptive scaling factor at training step $t$.
@@ -101,18 +145,21 @@ python train.py
 ## 📂 Project Structure
 ```text
 .
-├── assets/                  # Diagrams and plots for documentation
-├── config/                  # Configuration settings (Model/Train/Data)
-├── data/                    # Dataset storage and meta-files
+├── checkpoint/              # Model checkpoints (.pt)
+├── config/
+│   └── config.py            # Global configuration (Model/Train/Data)
+├── data/                    # Dataset storage and meta-data
 ├── src/
-│   ├── dataset.py           # Data processing and tokenization
+│   ├── dataset.py           # Data preparation and tokenization
 │   └── model.py             # Pascal Biased Attention implementation
 ├── utils/
-│   ├── check_ckpt.py        # Checkpoint validator
-│   └── plot_graph.py        # Loss visualization utility
-├── train.py                 # Main training script
+│   ├── check_ckpt.py        # Checkpoint validation utility
+│   └── plot_graph.py        # Loss visualization script
+├── evaluate.py              # Performance evaluation script
 ├── generate.py              # Text generation script
 ├── LICENSE                  # MIT License
+├── requirements.txt         # Dependencies
+├── train.py                 # Main training loop
 └── README.md                # Project documentation
 ```
 
@@ -127,6 +174,7 @@ python train.py
 **Min JuHo (민주호)**
 - **GitHub**: [@lenftk](https://github.com/lenftk)
 - **Email**: juhomin16@gmail.com
+- **Activity**: 2024.09 ~ Present
 
 ## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
