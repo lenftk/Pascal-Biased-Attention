@@ -40,6 +40,8 @@ This value is transformed into a log-bias and added to the attention scores befo
 
 The model follows a **Decoder-only Transformer** architecture (GPT-style) but replaces the standard Self-Attention with **Pascal Biased Multi-Head Attention**.
 
+<div align="center" style="max-width: 600px; margin: auto;">
+
 ```mermaid
 graph TD
     Input([Input Tokens]) --> AT[Token & Positional Embedding]
@@ -86,6 +88,8 @@ graph TD
     style PBA fill:#fdd
 ```
 
+</div>
+
 ### Biased Attention Formula
 The Pascal biased attention is defined as:
 $$\text{Attention}_{pascal}(Q, K, V) = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} + \alpha(t) \cdot B'(\theta) \right)V$$
@@ -120,7 +124,7 @@ The model demonstrates efficient convergence on WikiText-103, reaching a competi
 
 ### Dependencies
 ```bash
-pip install torch numpy datasets tokenizers tqdm
+pip install -r requirements.txt
 ```
 
 ### Configuration
