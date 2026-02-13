@@ -3,3 +3,6 @@ numpy
 tqdm
 datasets
 tokenizers
+matplotlib
+seaborn
+codecarbon
