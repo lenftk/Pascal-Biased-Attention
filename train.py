@@ -20,7 +20,6 @@ def train_model():
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
 
-    # Load data
     data_dir = t_config.data_dir
     train_data = np.fromfile(os.path.join(data_dir, 'train.bin'), dtype=np.uint32)
     val_data = np.fromfile(os.path.join(data_dir, 'val.bin'), dtype=np.uint32)
